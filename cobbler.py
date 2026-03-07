@@ -4,45 +4,47 @@ import itertools
 from math import pi, cos, sin, tan, atan, atan2
 from svgpathtools import Path, Line, CubicBezier, Arc
 
-# Description of Caravel die & pads
+# Description of ttgf0p1 die & pads
 # Warning: pad numbers don't correspond to QFN pin numbering
-DIE_WIDTH = 3.6
-DIE_HEIGHT = 5.2
+DIE_WIDTH = 2.935
+DIE_HEIGHT = 2.935
 DIE_ORIGIN_X = DIE_WIDTH / 2
 DIE_ORIGIN_Y = DIE_HEIGHT / 2
 PAD_CENTERS = [
-    (-1.729785, -2.2195), (-1.7294, -2.0035), (-1.7294, -1.7925), (-1.7294, -1.5815), (-1.729785, -1.3705), (-1.729785, -1.1545),
-    (-1.729785, -0.9385), (-1.729785, -0.7225), (-1.729785, -0.5065), (-1.729785, -0.2905), (-1.729785, -0.0745), (-1.7294, 0.1415),
-    (-1.7294, 0.3525), (-1.729785, 0.5635), (-1.729785, 0.7795), (-1.729785, 0.9955), (-1.729785, 1.2115), (-1.729785, 1.4275),
-    (-1.729785, 1.6435), (-1.7294, 2.0055), (-1.7294, 2.2165), (-1.3625, 2.5294), (-1.0935, 2.5294), (-0.8245, 2.529785),
-    (-0.5505, 2.5294), (-0.2815, 2.529785), (-0.0075, 2.529785), (0.2665, 2.529785), (0.5405, 2.529785), (0.8145, 2.529785),
-    (1.0885, 2.5294), (1.3575, 2.5294), (1.729785, 2.0565), (1.729785, 1.8305), (1.729785, 1.6055), (1.729785, 1.3795),
-    (1.729785, 1.1545), (1.729785, 0.9295), (1.729785, 0.7035), (1.7294, 0.4785), (1.7294, 0.2575), (1.7294, 0.0375),
-    (1.729785, -0.1825), (1.729785, -0.4085), (1.729785, -0.6335), (1.729785, -0.8595), (1.729785, -1.0845), (1.729785, -1.3095),
-    (1.7294, -1.5355), (1.729785, -1.7555), (1.7294, -1.9815), (1.729785, -2.2015), (1.3785, -2.529785), (1.1215, -2.5294),
-    (0.8695, -2.529785), (0.6125, -2.529785), (0.1675, -2.529785), (-0.0895, -2.5294), (-0.3415, -2.529785), (-0.5995, -2.529785),
-    (-0.8565, -2.529785), (-1.1135, -2.529785), (-1.3705, -2.529785),
+    (-1.435, -1.05), (-1.435, -0.95), (-1.435, -0.85), (-1.435, -0.75), (-1.435, -0.65), (-1.435, -0.55), (-1.435, -0.45),
+    (-1.435, -0.35), (-1.435, -0.25), (-1.435, -0.15), (-1.435, -0.05), (-1.435, 0.05), (-1.435, 0.15), (-1.435, 0.25),
+    (-1.435, 0.35), (-1.435, 0.45), (-1.435, 0.55), (-1.435, 0.65), (-1.435, 0.75), (-1.435, 0.85), (-1.435, 0.95), (-1.435, 1.05),
+    (-1.05, 1.435), (-0.95, 1.435), (-0.85, 1.435), (-0.75, 1.435), (-0.65, 1.435), (-0.55, 1.435), (-0.45, 1.435), (-0.35, 1.435),
+    (-0.25, 1.435), (-0.15, 1.435), (-0.05, 1.435), (0.05, 1.435), (0.15, 1.435), (0.25, 1.435), (0.35, 1.435), (0.45, 1.435),
+    (0.55, 1.435), (0.65, 1.435), (0.75, 1.435), (0.85, 1.435), (0.95, 1.435), (1.05, 1.435), (1.435, 1.05), (1.435, 0.95),
+    (1.435, 0.85), (1.435, 0.75), (1.435, 0.65), (1.435, 0.55), (1.435, 0.45), (1.435, 0.35), (1.435, 0.25), (1.435, 0.15),
+    (1.435, 0.05), (1.435, -0.05), (1.435, -0.15), (1.435, -0.25), (1.435, -0.35), (1.435, -0.45), (1.435, -0.55), (1.435, -0.65),
+    (1.435, -0.75), (1.435, -0.85), (1.435, -0.95), (1.435, -1.05), (1.05, -1.435), (0.95, -1.435), (0.85, -1.435), (0.75, -1.435),
+    (0.65, -1.435), (0.55, -1.435), (0.45, -1.435), (0.35, -1.435), (0.25, -1.435), (0.15, -1.435), (0.05, -1.435), (-0.05, -1.435),
+    (-0.15, -1.435), (-0.25, -1.435), (-0.35, -1.435), (-0.45, -1.435), (-0.55, -1.435), (-0.65, -1.435), (-0.75, -1.435),
+    (-0.85, -1.435), (-0.95, -1.435), (-1.05, -1.435),
 ]
-GROUND_PADS = [3, 12, 21, 24, 30, 39, 40, 53, 57]
+GROUND_PADS = []
 PAD_SIZE = 0.06
 
 # Description of footprint to generate
-FP_WIDTH = 10
-FP_HEIGHT = 10.5
+FP_WIDTH = 11.5
+FP_HEIGHT = 11.5
 FP_ORIGIN_X = FP_WIDTH / 2
 FP_ORIGIN_Y = FP_HEIGHT / 2
 
 # Description of pattern to generate
-LANDING_PADS = 72
-LP_PHI1 = 0.07 * pi
-LP_PHI2 = 0.09 * pi
+LANDING_PADS = 92
+LP_PHI1 = 0.115 * pi
+LP_PHI2 = 0.115 * pi
+STRIPE_OFFSET = 2
 
 # Bond wires
 BOND_MAP = [
-    *range(26, 47),
-    *range(49, 60),
-    *(*range(63, 72), *range(0, 11)),
-    *range(13, 24),
+    *range(35, 57),
+    *range(58, 80),
+    *(*range(81, 92), *range(0, 11)),
+    *range(12, 34),
 ]
 
 # Wires to footprint edge
@@ -53,14 +55,14 @@ TRACE_CONTROL2_RATIO = 0.1
 EDGE_RASTER = 0.5
 CORNER_OFFSET_H = 0
 CORNER_OFFSET_V = 1
-TOP_LEFT_PAD_OFFSETS = [(4, 1), (4, 1), (3, 2), (2, 2), (1, 2)]
-LEFT_PAD_COUNT = 16
-BOTTOM_LEFT_PAD_OFFSETS = [(2, 2), (3, 2), (4, 1), (4, 1)]
-BOTTOM_PAD_COUNT=11
-BOTTOM_RIGHT_PAD_OFFSETS = [(3, 1), (3, 1), (3, 1), (2, 2), (1, 2)]
-RIGHT_PAD_COUNT = 16
-TOP_RIGHT_PAD_OFFSETS = [(2, 2), (3, 2), (4, 1), (4, 1)]
-TOP_PAD_COUNT = 11
+TOP_LEFT_PAD_OFFSETS = [(0, 0)] #[(4, 1), (4, 1), (3, 2), (2, 2), (1, 2)]
+LEFT_PAD_COUNT = 22
+BOTTOM_LEFT_PAD_OFFSETS = [(0, 0)] #[(2, 2), (3, 2), (4, 1), (4, 1)]
+BOTTOM_PAD_COUNT = 22
+BOTTOM_RIGHT_PAD_OFFSETS = [(0, 0)] #[(3, 1), (3, 1), (3, 1), (2, 2), (1, 2)]
+RIGHT_PAD_COUNT = 22
+TOP_RIGHT_PAD_OFFSETS = [(0, 0)] #[(2, 2), (3, 2), (4, 1), (4, 1)]
+TOP_PAD_COUNT = 22
 
 TOP_LEFT_PADS = [(-FP_ORIGIN_X+x*EDGE_RASTER, FP_ORIGIN_Y-y*EDGE_RASTER) for x, y in TOP_LEFT_PAD_OFFSETS]
 LEFT_PADS = [(-FP_ORIGIN_X, ((LEFT_PAD_COUNT-1)/2-i)*EDGE_RASTER) for i in range(LEFT_PAD_COUNT)]
@@ -82,7 +84,8 @@ EDGE_PADS = [
 ]
 
 EDGE_MAP = [
-    *range(48, 72), *range(0, 48),
+    *range(58, 92),
+    *range(0, 58),
 ]
 
 BOND_MAP_REVERSE = {j: i for i, j in enumerate(BOND_MAP)}
@@ -158,27 +161,27 @@ def stroke_from_edges(edge1, edge2):
 
 die_rect = rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT)
 mask_ring_inner = rounded_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.15)
-thermal_bridges_masked = [rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH+1.7, 0.3),
-                          rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, 0.3, DIE_HEIGHT+1.7)]
+thermal_bridges_masked = [rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH+2.2, 0.3),
+                          rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, 0.3, DIE_HEIGHT+2.2)]
 thermal_bridges = [rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH+0.6, 0.3),
                    rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, 0.3, DIE_HEIGHT+0.6)]
 ground_pad = rounded_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.3)
-ground_ring_inner = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.5, LP_PHI1, LP_PHI2)
-ground_ring_mid = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.65, LP_PHI1, LP_PHI2)
-ground_ring_outer = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.8, LP_PHI1, LP_PHI2)
-finger_ring_inner = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.0, LP_PHI1, LP_PHI2) 
-mask_ring_outer = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.1, LP_PHI1, LP_PHI2)
-finger_ring_bond = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.4, LP_PHI1, LP_PHI2)
-finger_ring_outer = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.7, LP_PHI1, LP_PHI2)
-route_ring = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.85, LP_PHI1, LP_PHI2)
-route_ring_epsilon = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.851, LP_PHI1, LP_PHI2)
-glob_ring = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.95, LP_PHI1, LP_PHI2)
-courtyard_ring = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 2.2, LP_PHI1, LP_PHI2)
+ground_ring_inner = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.75, LP_PHI1, LP_PHI2)
+ground_ring_mid = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 0.9, LP_PHI1, LP_PHI2)
+ground_ring_outer = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.05, LP_PHI1, LP_PHI2)
+finger_ring_inner = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.5, LP_PHI1, LP_PHI2) 
+mask_ring_outer = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.6, LP_PHI1, LP_PHI2)
+finger_ring_bond = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 1.9, LP_PHI1, LP_PHI2)
+finger_ring_outer = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 2.2, LP_PHI1, LP_PHI2)
+route_ring = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 2.35, LP_PHI1, LP_PHI2)
+route_ring_epsilon = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 2.351, LP_PHI1, LP_PHI2)
+glob_ring = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 2.45, LP_PHI1, LP_PHI2)
+courtyard_ring = bezier_rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, DIE_WIDTH, DIE_HEIGHT, 2.7, LP_PHI1, LP_PHI2)
 footprint_rect = rectangle(FP_ORIGIN_X, FP_ORIGIN_Y, FP_WIDTH, FP_HEIGHT)
 
 
 def stripe_coord(ring, index):
-    phi = index/(4*LANDING_PADS)*2*pi
+    phi = (index+STRIPE_OFFSET)/(4*LANDING_PADS)*2*pi
     r = 10
     seg = line_segment(r*cos(phi), -r*sin(phi)).translated(complex(FP_ORIGIN_X, FP_ORIGIN_Y))
     isc = ring.intersect(seg)

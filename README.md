@@ -1,1 +1,1 @@
-Script used for creating COB footprint for TT08
+Script used for creating COB footprint for TTGF0p1
