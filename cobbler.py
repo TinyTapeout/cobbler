@@ -4,7 +4,7 @@ import itertools
 from math import pi, cos, sin, tan, atan, atan2
 from svgpathtools import Path, Line, CubicBezier, Arc
 
-# Description of ttgf0p1 die & pads
+# Description of ttgf0p2 die & pads
 # Warning: pad numbers don't correspond to QFN pin numbering
 DIE_WIDTH = 3.932
 DIE_HEIGHT = 5.122
